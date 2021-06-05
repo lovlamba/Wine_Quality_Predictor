@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Wine Quality Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<style>
+  ::placeholder {
+    color: black;
+  }
+</style>
+
+<body>
+  <div class="login">
+    <h1>Wine Quality Predictor</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="number" step="any" name="vol_acidity"
+        placeholder="Enter the value of volatile acidity of your wine [from 0.0 to 2.0] - " required="required" />
+      <input type="number" step="any" name="alco"
+        placeholder="Enter the alcohol percentage of your wine [from 8.0 to 15.0] + " required="required" />
+      <input type="number" step="any" name="den"
+        placeholder="Enter the value of density of your wine [from 1.0 to 2.0] - " required="required" />
+      <input type="number" step="any" name="wtype"
+        placeholder="Enter the type of your wine [0 for white wine & 1 for red wine] - " required="required" />
+      <input type="number" step="any" name="chlo"
+        placeholder="Enter the value of chlorides of your wine [from 0.0 to 1.0] - " required="required" />
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+    <h2 style="color: black;">{{ prediction_text }}</h2>
+
+  </div>
+
+
+</body>
+
+</html>
